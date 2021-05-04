@@ -2,23 +2,18 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:se_challenge/app/infra/adapters/httpClient/http_client.dart';
+import 'package:se_challenge/app/data/repository/home_repositoy.dart';
 
 class HomeController extends GetxController {
+  final HomeRepository homeRepository = new HomeRepository();
+
   final entries = [].obs;
   TextEditingController usersSearch = TextEditingController();
 
-  search() async {
-    final HttpClient httpClient = HttpClient();
-
-    await httpClient
-        .request(
-            url:
-                'https://api.github.com/search/users?q=${this.usersSearch.text}',
-            method: 'GET')
-        .then((value) {
+  handleSearch() async {
+    homeRepository.handleSearch(this.usersSearch.text).then((value) {
       this.entries.clear();
-      this.entries.value = value.data['items'];
+      this.entries.value = value;
       this.entries.refresh();
     });
   }

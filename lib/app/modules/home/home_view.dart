@@ -34,7 +34,7 @@ class HomeView extends StatelessWidget {
                   suffixIcon: Icon(Icons.search),
                   colorIcon: Colors.grey,
                   keyboardType: TextInputType.text,
-                  suffixIconPress: () => controller.search(),
+                  suffixIconPress: () => controller.handleSearch(),
                 ),
               ),
               SizedBox(
