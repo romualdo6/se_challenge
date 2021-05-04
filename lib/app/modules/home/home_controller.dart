@@ -17,4 +17,10 @@ class HomeController extends GetxController {
       this.entries.refresh();
     });
   }
+
+  handleViewProfile(url) {
+    homeRepository.handleViewProfile(url).then((value) {
+      Get.toNamed('/Profile', arguments: value);
+    });
+  }
 }

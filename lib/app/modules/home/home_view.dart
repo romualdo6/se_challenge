@@ -16,6 +16,15 @@ class HomeView extends StatelessWidget {
           'SE Challenge',
           style: TextStyle(color: Colors.black),
         ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: OutlinedButton(
+              onPressed: () => {},
+              child: Text("Favoritos"),
+            ),
+          )
+        ],
         backgroundColor: Colors.white,
         elevation: 0,
       ),

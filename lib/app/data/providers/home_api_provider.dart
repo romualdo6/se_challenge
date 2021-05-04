@@ -13,4 +13,13 @@ class HomeApiProvider {
 
     return response;
   }
+
+  handleViewProfile(url) async {
+    var response =
+        await httpClient.request(url: url, method: 'GET').then((value) {
+      return value.data;
+    });
+
+    return response;
+  }
 }

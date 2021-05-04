@@ -24,10 +24,13 @@ class ListUsers extends StatelessWidget {
             itemBuilder: (context, index) {
               return Column(
                 children: [
-                  ListTile(
-                    leading:
-                        Image.network(controller.entries[index]['avatar_url']),
-                    title: Text('${controller.entries[index]['login']}'),
+                  TextButton(
+                    onPressed: () => controller.handleViewProfile(controller.entries[index]['url']),
+                    child: ListTile(
+                      leading: Image.network(
+                          controller.entries[index]['avatar_url']),
+                      title: Text('${controller.entries[index]['login']}'),
+                    ),
                   ),
                   Divider()
                 ],
