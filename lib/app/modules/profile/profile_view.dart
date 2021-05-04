@@ -37,7 +37,17 @@ class ProfileView extends StatelessWidget {
                   child: Container(
                       height: 150,
                       width: 150,
-                      child: Image.network(args['avatar_url']))),
+                      child: Image.network(
+                        args['avatar_url'],
+                        errorBuilder: (BuildContext context, Object exception,
+                            StackTrace stackTrace) {
+                          return Icon(
+                            Icons.supervised_user_circle_sharp,
+                            size: 100,
+                            color: Colors.grey,
+                          );
+                        },
+                      ))),
               SizedBox(
                 height: 5,
               ),

@@ -25,7 +25,8 @@ class ListUsers extends StatelessWidget {
               return Column(
                 children: [
                   TextButton(
-                    onPressed: () => controller.handleViewProfile(controller.entries[index]['url']),
+                    onPressed: () => controller
+                        .handleViewProfile(controller.entries[index]['url']),
                     child: ListTile(
                       leading: Image.network(
                           controller.entries[index]['avatar_url']),

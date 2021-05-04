@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:se_challenge/app/infra/adapters/localStorage/local_storage.dart';
@@ -8,18 +9,14 @@ import 'package:se_challenge/app/modules/home/home_controller.dart';
 class FavoritesView extends StatelessWidget {
   final LocalStorage storage = LocalStorage();
   final HomeController controller = Get.put(HomeController());
+  var data;
 
   @override
   Widget build(BuildContext context) {
-    var data;
-
     storage.request(method: 'READ', prop: 'data') == null
         ? data = []
         : data = jsonDecode(
             '[' + storage.request(method: 'READ', prop: 'data') + ']');
-
-    /*var data =
-        jsonDecode('[' + storage.request(method: 'READ', prop: 'data') + ']');*/
 
     return Scaffold(
       appBar: AppBar(
@@ -45,9 +42,20 @@ class FavoritesView extends StatelessWidget {
             return Column(
               children: [
                 TextButton(
-                  onPressed: () => Get.toNamed('/Profile', arguments: data[index]),
+                  onPressed: () =>
+                      Get.toNamed('/Profile', arguments: data[index]),
                   child: ListTile(
-                    leading: Image.network(data[index]['avatar_url']),
+                    leading: Image.network(
+                      data[index]['avatar_url'],
+                      errorBuilder: (BuildContext context, Object exception,
+                          StackTrace stackTrace) {
+                        return Icon(
+                          Icons.supervised_user_circle_sharp,
+                          size: 70,
+                          color: Colors.grey,
+                        );
+                      },
+                    ),
                     title: Text('${data[index]['login']}'),
                   ),
                 ),
