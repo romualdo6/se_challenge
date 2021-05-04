@@ -6,25 +6,20 @@ class HttpClient {
 
   HttpClient();
 
-  request(
-      {@required String url,
-      @required String method,
-      dynamic data,
-      bool useInterceptors}) async {
-    var futureResponse;
+  request({@required String url, @required String method, dynamic data}) async {
+    var response;
 
     try {
       if (method == 'POST') {
-        futureResponse = await client.post(url, data: data);
+        response = await client.post(url, data: data);
       } else if (method == 'GET') {
-        futureResponse = await client.get(url);
+        response = await client.get(url);
       } else if (method == 'PUT') {
-        futureResponse = await client.put(url, data: data);
+        response = await client.put(url, data: data);
       }
     } catch (error) {
       return error;
     }
-
-    return futureResponse;
+    return response;
   }
 }
