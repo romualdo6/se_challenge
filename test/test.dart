@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import 'package:se_challenge/app/infra/adapters/httpClient/http_client.dart';
 import 'package:test/test.dart';
 
