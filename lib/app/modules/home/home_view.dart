@@ -20,7 +20,7 @@ class HomeView extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: OutlinedButton(
-              onPressed: () => {},
+              onPressed: () => Get.toNamed('/Favorites'),
               child: Text("Favoritos"),
             ),
           )

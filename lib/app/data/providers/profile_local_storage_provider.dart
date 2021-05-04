@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:se_challenge/app/infra/adapters/localStorage/local_storage.dart';
 
 class ProfileLocalStorageProvider {

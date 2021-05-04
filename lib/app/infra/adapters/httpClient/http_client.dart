@@ -1,3 +1,5 @@
+import 'package:flutter/cupertino.dart';
+import 'package:get/get.dart';
 import 'package:meta/meta.dart';
 import 'package:dio/dio.dart';
 
@@ -18,6 +20,12 @@ class HttpClient {
         response = await client.put(url, data: data);
       }
     } catch (error) {
+      Get.defaultDialog(
+          title: "Alerta",
+          textCancel: "OK?",
+          onCancel: () => Get.back(),
+          content: Text(
+              "Esta ocorrendo algo ao tentar requisitar os dados, verifique sua conexão!"));
       return error;
     }
     return response;
